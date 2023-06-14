@@ -20,20 +20,25 @@ void setup() {
   pinMode(pos1, INPUT);
   pinMode(pos2, INPUT);
   pinMode(pos3, INPUT);
+
+  Serial.begin(9600);
 }
 
 void position1() {
   wrist_servo.write(wristJoint[0]);
+  delay(50);
   elbow_servo.write(elbowJoint[0]);  
 }
 
 void position2() {
   wrist_servo.write(wristJoint[1]);
+  delay(50);
   elbow_servo.write(elbowJoint[1]);  
 }
 
 void position3() {
   wrist_servo.write(wristJoint[2]);
+  delay(50);
   elbow_servo.write(elbowJoint[2]);
 }
 
@@ -41,9 +46,10 @@ void loop() {
 //  if(digitalRead(grab) == HIGH) {
 //    closeClaw();
 //  }
-
+  
   if(digitalRead(pos1) == HIGH) {
     position1();
+    continue;
   }
 
   else if(digitalRead(pos2) == HIGH) {
@@ -54,5 +60,6 @@ void loop() {
     position3();
   }
 
+  Serial.println(elbow_servo.read());
   delay(500);
 }
