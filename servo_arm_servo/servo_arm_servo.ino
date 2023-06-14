@@ -49,7 +49,6 @@ void loop() {
   
   if(digitalRead(pos1) == HIGH) {
     position1();
-    continue;
   }
 
   else if(digitalRead(pos2) == HIGH) {
